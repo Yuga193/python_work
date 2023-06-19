@@ -10,8 +10,6 @@ def card_value(hand):
     for card in hand:
         if card in ["K","Q","J"]:
             result+=10
-        elif card=="A":
-            continue
         else:
             result+=card
     return result
@@ -34,7 +32,7 @@ def game():
     print(f"現在の所持金は{money}円です")
     while True:
         try:
-            play_money=int(input("いくら賭けますか？:"))
+            play_money=int(input("いくら賭けますか？:"))#1000円のような単位を含む入力には対応していない。対応させたいならreモジュールとか使うと良いかも
             if play_money<=money:
                 break
             else:
@@ -123,14 +121,14 @@ while True: #再戦処理
     if playerWIN>=5:
         print("5勝したのでゲーム終了です")
         print(f"最終的な所持金は{money}円でした")
-        play_again = input("再度プレイしますか？(y/n): ").lower()
+        play_again=input("再度プレイしますか？(y/n): ").lower()
         money=10000
         if play_again !='y':
             break
     if playerLOSE>=5:
         print("5敗したのでゲーム終了です")
         print(f"最終的な所持金は{money}円でした")
-        play_again = input("再び最初からプレイしますか？(y/n): ").lower()
+        play_again=input("再び最初からプレイしますか？(y/n): ").lower()
         money=10000
         if play_again !='y':
             break
@@ -139,7 +137,7 @@ while True: #再戦処理
         break
 
 #要点のまとめ
-#まず前提として29行目から118行目までgameという大きな関数で構成されています
+#まず前提として27行目から116行目までgameという大きな関数で構成されています
 #returnとbreakでループから抜けます(これはこのプログラムに限った話ではない)
 #game関数は所持金の表示、賭け金の設定、カードの配布、数値の比較を行っています
 #A,J,Q,Kの処理は全て関数であり、game関数に組み込んで使用しています
@@ -148,7 +146,7 @@ while True: #再戦処理
 
 
 
-#エンドレスモード。こちらで遊ぶ時は下記のコメントアウトを解除した後に１１９行目~１３８行目をコメントアウト
+#エンドレスモード。こちらで遊ぶ時は下記のコメントアウトを解除した後に１１８行目~１３７行目をコメントアウト
 #while True: #再戦処理
 #    print(game())
 #    print(f"現在の所持金は{money}円です")
